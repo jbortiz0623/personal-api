@@ -57,7 +57,7 @@ var capitals_list = [
     slave: false
   },
   {
-    city: "Harrisburg",
+    city: "Trenton",
     slave: false
   },
   {
@@ -77,3 +77,41 @@ var capitals_list = [
     slave: false
   }
 ];
+
+db.Capital.deleteMany({}, function(err, capitals) {
+    console.log('removed all capitals');
+    db.Capital.create(capitals_list, function(err, capitals){
+      if (err) {
+        console.log(err);
+        return;
+      }
+      console.log('recreated all capitals');
+      console.log("created", capitals.length, "capitals");
+  
+  
+      db.Colony.deleteMany({}, function(err, colonies){
+        console.log('removed all colonies');
+        colonies_list.forEach(function (colonyData) {
+          var colony = new db.Colony({
+            title: colonyData.title,
+            yearDate: colonyData.yearDate,
+            capital: colonyData.capital
+          });
+          db.Capital.findOne({city: colonyData.capital}, function (err, foundCapital) {
+            if (err) {
+              console.log(err);
+              return;
+            }
+            colony.capital = foundCapital;
+            colony.save(function(err, savedColony){
+              if (err) {
+                console.log(err);
+              }
+              console.log('saved '+savedColony.title+ ' holds the capital of ');
+            });
+          });
+        });
+      });
+  
+    });
+  });

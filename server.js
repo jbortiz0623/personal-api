@@ -13,11 +13,14 @@ app.use(express.static(__dirname + '/public'));
 // ROUTES
 
 app.get("/", (request, response) => {
-  response.send( "Welcome to my API");
+  response.sendFile(__dirname+'/views/');
 });
 
-app.get('/api/colonies/', (req, res) => {
+
+
+app.get('/api/colony/', (req, res) => {
   db.Colony.find({ })
+  .populate('capital')
     .exec((err, colonies) => {
       if (err) {
         res.status(500).send(err);

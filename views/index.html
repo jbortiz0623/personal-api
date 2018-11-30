@@ -1,22 +1,44 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Personal-Api</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-    <script src="app.js"></script>
-    
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>My personal Api</title>
+
+  <!-- STYLESHEETS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/styles/main.css">
+  <!-- VENDOR SCRIPTS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+
+  <!-- APPLICATION SCRIPTS -->
+  <script src="/scripts/app.js"></script>
+
 </head>
 <body>
-    <h1>Under Construction</h1>
-    <form method="post" action="/addname">
-    <label>Enter Your Name</label><br>
-    <input type="text" name="firstName" placeholder="Enter first name..." required>
-    <input type="text" name="lastName" placeholder="Enter last name..." required>
-    <input type="submit" value="Add Name">
-    </form>
+  <div class="container">
+    <h1 class="text-center">Eastward Expansion</h1>
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <form class="form-inline" id="newColonyForm">
+          <div class="form-group">
+            <label for="title">Colony</label>
+            <input type="text" class="form-control" name="title" placeholder="Colony title">
+          </div>
+          <div class="form-group">
+            <label for="title">Capital</label>
+            <input type="text" class="form-control" name="author" placeholder="Colony capital">
+          </div>
+          <button type="submit" class="btn btn-default">Create colony</button>
+        </form>
+        <div id='colonyTarget'>
+            
+        </div>
+      </div>
+    </div>
+  </div>
+  <img src="https://image.slidesharecdn.com/13colonies-090902223525-phpapp01/95/13-colonies-1-728.jpg?cb=1264706933" alt="sdfssd">
 </body>
 </html>
