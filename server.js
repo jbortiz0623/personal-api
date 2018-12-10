@@ -1,9 +1,8 @@
 // require express and other modules
-const
-    express = require('express'),
-    app = express(),
-    bodyParser = require('body-parser')
-    db = require('./models')
+const express = require('express'),
+const app = express(),
+const bodyParser = require('body-parser')
+const db = require('./models')
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json())
 
@@ -30,7 +29,6 @@ app.get('/api/colony/', (req, res) => {
 });
 //Get one Colony
 app.get('/api/colonies/:id', (req, res) => {
-  // find one book by its id
   console.log('colonies show', req.params);
   db.Colony.findById(re.params.id).populate('capital').exec((err, books) => {
     if(err) { console.log('index error: '+err); res.sendStatus(500); } 
@@ -81,7 +79,7 @@ app.put('/api/colonies/:id', (req, res) => {
 // delete colony
 app.delete('/api/colonies/:id', (req, res) => {
   let colonyId = req.params.id;
-  db.Food.deleteOne(
+  db.Colony.deleteOne(
       { _id: colonyId },
       (err, deletedColony) => {
           if(err) { return console.log(err) }
